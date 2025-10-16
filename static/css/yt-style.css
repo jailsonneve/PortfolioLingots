@@ -8,6 +8,7 @@
   --accent-2: #6f7cff;
   --muted: #6b7280;
   --card: #f8fafc;
+  --bc: black;
   --shadow: 0 8px 30px rgba(11, 18, 32, 0.08);
 }
 
@@ -18,6 +19,7 @@
   --accent-2: #4f8cff;
   --muted: #9aa4b2;
   --card: #0f1720;
+  --bc: none;
   --shadow: 0 10px 40px rgba(2, 6, 23, 0.6);
 }
 
@@ -49,7 +51,6 @@ h1, h2, h3, h4, h5 {
    NAVBAR
 ============================== */
 .navbar {
-  backdrop-filter: blur(8px);
   background: rgba(255, 255, 255, 0.6);
   transition: background 0.3s;
 }
@@ -87,7 +88,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .btn-ghost {
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   color: var(--fg);
   background: transparent;
 }
@@ -138,7 +139,6 @@ h1, h2, h3, h4, h5 {
 }
 
 .progress {
-  background: rgba(0, 0, 0, 0.08);
   border-radius: 5px;
   overflow: hidden;
   height: 8px;
@@ -147,18 +147,18 @@ h1, h2, h3, h4, h5 {
 
 /* Tema escuro — gradiente neon */
 [data-theme="dark"] .progress {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.205);
 }
 [data-theme="dark"] .bg-gradient {
-  background: linear-gradient(90deg, #00ffc8, #4f8cff);
+  background: #03a582;  
 }
 
 /* Tema claro — contraste melhorado */
 [data-theme="light"] .bg-gradient {
-  background: linear-gradient(90deg, #3b82f6, #7c3aed);
+  background: #c54660;
 }
 [data-theme="light"] .progress {
-  background: rgba(0, 0, 0, 0.308);
+  background: rgba(0, 0, 0, 0.459);
 }
 
 /* ==============================
@@ -174,6 +174,9 @@ h1, h2, h3, h4, h5 {
 .services .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+.edited{
+  color: var(--fg);
 }
 
 /* ==============================
@@ -215,7 +218,7 @@ h1, h2, h3, h4, h5 {
    CONTATO E FOOTER
 ============================== */
 footer {
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.432);
   color: var(--muted);
 }
 [data-theme="dark"] footer {
@@ -240,4 +243,12 @@ footer {
 ============================== */
 *, *::before, *::after {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Responsivo: telas menores */
+@media (max-width: 429px) {
+  .btnEdit{
+    margin-top: 10px;
+  }
+  
 }

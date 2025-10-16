@@ -1,6 +1,7 @@
 // ============ CONFIGURAÇÃO ============
 const apiKey = 'AIzaSyBkmoP3XUpoOla6hNGDZDgRPENplJ4rcEk';
 const channelId = 'UCGZWhMVk6ecteLblm1UcoTg';
+const maxResults = 12;
 
 // ============ TEMA ============
 const body = document.body;
@@ -10,8 +11,29 @@ document.getElementById("themeToggle").addEventListener("click", () => {
   body.setAttribute("data-theme", newTheme);
   localStorage.setItem("theme", newTheme);
   icon.className = newTheme === "dark" ? "bi bi-moon-stars" : "bi bi-sun";
+  
+  // ==== TROCA A CLASSE DA NAVBAR ====
+  const navbar = document.querySelector(".navbar");
+  if (navbar) {
+    navbar.classList.toggle("navbar-dark", newTheme === "dark");
+    navbar.classList.toggle("navbar-light", newTheme === "light");
+    navbar.classList.toggle("border-black", newTheme === "light");
+    navbar.classList.toggle("border-white", newTheme === "dark");
+  }
 });
 body.setAttribute("data-theme", localStorage.getItem("theme") || "dark");
+const savedTheme = localStorage.getItem("theme") || "dark";
+body.setAttribute("data-theme", savedTheme);
+
+// sincroniza navbar ao carregar
+const navbar = document.querySelector(".navbar");
+if (navbar) {
+  navbar.classList.toggle("navbar-dark", savedTheme === "dark");
+  navbar.classList.toggle("navbar-light", savedTheme === "light");
+  navbar.classList.toggle("border-black", savedTheme === "light");
+  navbar.classList.toggle("border-white", savedTheme === "dark");
+}
+
 
 // ============ SERVIÇOS ============
 const services = [
@@ -23,12 +45,12 @@ const servicesContainer = document.getElementById("servicesContainer");
 services.forEach(s => {
   servicesContainer.innerHTML += `
     <div class="col-md-4">
-      <div class="card p-3">
+      <div class="border border-black card p-3">
         <div class="d-flex align-items-center">
           <i class="bi ${s.icon} fs-2 me-3" style="color:var(--accent)"></i>
           <div>
             <h5>${s.title}</h5>
-            <p class="text-muted small">${s.desc}</p>
+            <p class="small edited">${s.desc}</p>
           </div>
         </div>
       </div>
@@ -56,7 +78,7 @@ async function fetchVideos() {
     const uploads = channelData.items[0].contentDetails.relatedPlaylists.uploads;
 
     const playlistRes = await fetch(
-      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploads}&maxResults=8&key=${apiKey}`
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploads}&maxResults=${maxResults}&key=${apiKey}`
     );
     const playlistData = await playlistRes.json();
     
@@ -65,7 +87,7 @@ async function fetchVideos() {
       const videoId = item.snippet.resourceId.videoId;
       const title = item.snippet.title;
       videosGrid.innerHTML += `
-        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-card text-decoration-none text-reset">
+        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="border border-black video-card text-decoration-none text-reset">
           <img class="video-thumb" src="https://i.ytimg.com/vi/${videoId}/hqdefault.jpg" alt="${title}">
           <div class="video-body">
             <div class="video-title">${title}</div>
