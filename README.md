@@ -36,7 +36,10 @@ PortfolioLingots-main/
 |-------------|------------|
 | **HTML5** | Estruturação semântica da página. |
 | **CSS3** | Estilização visual e responsividade. |
+| **Bootstrap** | Estilização visual e responsividade. |
+| **SweetAlert2** | Estilização visual dos alertas, fazendo eles mais dinâmicos e bonitos. |
 | **JavaScript (ES6)** | Manipulação dinâmica da interface e integração com APIs externas (como o YouTube). |
+
 
 ---
 
@@ -71,3 +74,4 @@ Arthur Dai
 [📧 Enviar e-mail](mailto:daiarthur053@gmail.com)
 
 [🌐 Meu Portfolio](https://jailsonneve.github.io/Projetos-Html/Projetos/Intermediario/Portfolio/index.html)
+
